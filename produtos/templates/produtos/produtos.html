@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Produtos com dividido em categorias</h1>
+    <a href="">Cadastrar produto</a>
+    {% for categoria in categorias %}
+        <h2>{{ categoria }}</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Imagem</th>
+                    <th>Nome</th>
+                    <th>Preço</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for produto in produtos %}
+                {% if produto.categoria == categoria %}
+                <tr>
+                    <td><img src="{{ produto.image.url }}" alt="" width="60px" height="60px"></td>
+                    <td>{{ produto.nome }}</td>
+                    <td>{{ produto.preco }}</td>
+                    <td></td>
+                </tr>
+                {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endfor %}
+</body>
+</html>
