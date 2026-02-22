@@ -19,10 +19,11 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path
 from dashboard.views import index
-from produtos.views import produtos_index
+from produtos.views import produtos_index, produtos_insert
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='dashboard_index'),
-    path('produtos/', produtos_index, name='produtos')
+    path('produtos/', produtos_index, name='produtos'),
+    path('produtos/insert/', produtos_insert, name='produtos_insert'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

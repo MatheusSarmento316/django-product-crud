@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>Produtos com dividido em categorias</h1>
-    <a href="">Cadastrar produto</a>
+    <a href="{% url 'produtos_insert' %}">Cadastrar produto</a>
     {% for categoria in categorias %}
         <h2>{{ categoria }}</h2>
         <table>
