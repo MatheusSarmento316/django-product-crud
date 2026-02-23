@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Edit o seu produto</h1>
+    <form action="{% url 'produtos_edit' produto.id %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="image" src="{{ produto.image.url }}" alt="" required>
+        <input type="text" name="nome" placeholder="Nome do produto" value="{{ produto.nome }}" required>
+        <input type="text" name="descricao" placeholder="Descrição" value="{{ produto.descricao }}" required>
+        <input type="number" name="preco" placeholder="Preço" value="{{ produto.preco }}" required>
+        <select name="categoria" id="">
+            {% for categoria in categorias %}
+                <option value="{{ categoria.id }}">{{ categoria.categoria }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Editar</button>
+    </form>
+</body>
+</html>
