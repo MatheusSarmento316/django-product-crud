@@ -19,13 +19,16 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path
 from dashboard.views import index
-from produtos.views import produtos_index, produtos_insert, produtos_edit, produtos_delete
+from produtos.views import produtos_index, produtos_insert, produtos_edit, produtos_delete, categorias_insert, categorias_edit, categorias_delete
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='dashboard_index'),
     path('produtos/', produtos_index, name='produtos'),
     path('produtos/insert/', produtos_insert, name='produtos_insert'),
-    path('<int:produto_id>/edit/', produtos_edit, name='produtos_edit'),
-    path('<int:produto_id>/delete/', produtos_delete, name='produtos_delete')
+    path('<int:produto_id>/produtos/edit/', produtos_edit, name='produtos_edit'),
+    path('<int:produto_id>/produtos/delete/', produtos_delete, name='produtos_delete'),
+    path('categorias/insert/', categorias_insert, name='categorias_insert'),
+    path('<int:categoria_id>/categorias/edit/', categorias_edit, name='categorias_edit'),
+    path('<int:categoria_id>/categorias/delete/', categorias_delete, name='categorias_delete')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

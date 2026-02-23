@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Edição de categoria</h1>
+    <form action="{% url 'categorias_edit' categoria.id %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="image" src="{{ categoria.image.url }}" alt="" required>
+        <input type="text" name="categoria" placeholder="Nome da categoria" value="{{ categoria.categoria }}" required>
+        <button type="submit">Editar</button>
+    </form>
+</body>
+</html>

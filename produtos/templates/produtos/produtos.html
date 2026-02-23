@@ -6,10 +6,14 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Produtos com dividido em categorias</h1>
+    <h1>Produtos dividido em categorias</h1>
     <a href="{% url 'produtos_insert' %}">Cadastrar produto</a>
+    <a href="{% url 'categorias_insert' %}">Cadastrar categoria</a>
     {% for categoria in categorias %}
         <h2>{{ categoria }}</h2>
+        <img src="{{ categoria.image.url }}" alt="" width="100px" height="100px">
+        <a href="{% url 'categorias_edit' categoria.id %}">Editar categoria</a>
+        <a href="{% url 'categorias_delete' categoria.id %}">Deletar Categoria</a>
         <table>
             <thead>
                 <tr>

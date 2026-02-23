@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Cadastrar categorias</h1>
+    <form action="{% url 'categorias_insert' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="image" src="" alt="" required>
+        <input type="text" name="categoria" placeholder="Nome da categoria" required>
+        <button type="submit">Cadastrar</button>
+    </form>
+</body>
+</html>

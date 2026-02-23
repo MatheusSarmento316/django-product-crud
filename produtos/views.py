@@ -10,6 +10,31 @@ def produtos_index(request):
     categorias = Categoria.objects.filter(user=request.user)
     return render(request, 'produtos/produtos.html', {'produtos': produtos, 'categorias': categorias})
 
+def categorias_insert(request):
+    if request.method == 'POST':
+        Categoria.objects.create(
+            user = request.user,
+            image = request.FILES.get('image'),
+            categoria = request.POST.get('categoria')
+        )
+        return redirect('produtos')
+    categorias = Categoria.objects.filter(user=request.user)
+    return render(request, 'produtos/categorias_insert.html', {'categorias': categorias})
+
+def categorias_edit(request, categoria_id):
+    categoria = get_object_or_404(Categoria, id=categoria_id, user=request.user)
+    if request.method == 'POST':
+        categoria.image = request.FILES.get('image')
+        categoria.categoria = request.POST.get('categoria')
+        categoria.save()
+        return redirect('produtos')
+    return render(request, 'produtos/categorias_edit.html', {'categoria': categoria})
+
+def categorias_delete(request, categoria_id):
+    categoria = get_object_or_404(Categoria, id=categoria_id, user=request.user)
+    categoria.delete()
+    return redirect('produtos')
+
 def produtos_insert(request):
     if request.method == 'POST':
         categoria = Categoria.objects.get(id=request.POST.get('categoria'))
