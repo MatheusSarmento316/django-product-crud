@@ -7,6 +7,7 @@
 </head>
 <body>
     <h1>Produtos dividido em categorias</h1>
+    <a href="{% url 'logout' %}">Logout</a>
     <a href="{% url 'produtos_insert' %}">Cadastrar produto</a>
     <a href="{% url 'categorias_insert' %}">Cadastrar categoria</a>
     {% for categoria in categorias %}

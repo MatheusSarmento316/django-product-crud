@@ -6,7 +6,13 @@
     <title>Document</title>
 </head>
 <body>
+    {% if messages %}
+        {% for message in messages %}
+            <p style="color: green;">{{ message }}</p>
+        {% endfor %}
+    {% endif %}
     <h1>Dashboard improvisado</h1>
     <a href="{% url 'produtos' %}">Produtos</a>
+    <a href="{% url 'logout' %}">Logout</a>
 </body>
 </html>
